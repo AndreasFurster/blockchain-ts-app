@@ -2,24 +2,7 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
-          <h2>Blockchain Chat</h2>
-        <!-- <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        /> -->
+        <h2>Blockchain Chat</h2>
       </div>
 
       <v-spacer></v-spacer>
@@ -29,7 +12,16 @@
         target="_blank"
         text
       >
-        <span class="mr-2">Repository</span>
+        <span class="mr-2">Server repo</span>
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+
+      <v-btn
+        href="https://github.com/AndreasFurster/blockchain-ts-app"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">App repo</span>
         <v-icon>mdi-github</v-icon>
       </v-btn>
     </v-app-bar>
@@ -51,7 +43,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 import Chatbox from './components/Chatbox.vue';
 import SendMessageBox from './components/SendMessageBox.vue';
 
@@ -59,7 +50,6 @@ export default Vue.extend({
   name: 'App',
 
   components: {
-    HelloWorld,
     Chatbox,
     SendMessageBox,
   },

@@ -9,7 +9,6 @@
             color="red"
           >
             <v-list-item-avatar>
-              <!-- <v-img :src="item.avatar"></v-img> -->
               <v-img :src="require('../assets/avatar.svg')"></v-img>
             </v-list-item-avatar>
 
@@ -62,8 +61,6 @@
     }
 
     updateMessages() {
-
-
       fetch(`${process.env.VUE_APP_API_ENDPOINT}/messages`)
         .then(res => res.json())
         .then(messages => {
@@ -71,7 +68,11 @@
           for (let i = 0; i < messages.length; i++) {
             const messageObject: IMessage = messages[i];
             const { userId, message, index, hash, previousHash, signature } = messageObject
+
+            // Recalculate hash
             const generatedHash = bc.getHashForBlock(userId, message, index, previousHash, signature)
+
+            // Validate if hash is the same as the provided hash
             messageObject.hashValid = generatedHash === hash
 
             // If there is a next block, check it's previousHash
@@ -83,6 +84,7 @@
               messageObject.hashChainValid = true
             }
 
+            // Only display first 8 chars
             messageObject.hash = messageObject.hash.substring(0, 8)
             messageObject.previousHash = messageObject.previousHash.substring(0, 8)
             messageObject.generatedHash = generatedHash.substring(0, 8)
