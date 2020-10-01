@@ -18,6 +18,8 @@ jobs:
         
       - name: Build Vue application
         run: npm run build
+        env:
+          VUE_APP_API_ENDPOINT: ${{ secrets.VUE_APP_API_ENDPOINT }}
         
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.1
